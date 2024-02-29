@@ -166,7 +166,7 @@ data "aws_ami" "al2023" {
   }
 }
 
-resource "aws_instance" "ec2_instance" {
+resource "aws_instance" "bastion" {
   ami           = data.aws_ami.al2023.id
   instance_type = "t2.micro"
   subnet_id     = local.subnet_id
@@ -178,4 +178,9 @@ resource "aws_instance" "ec2_instance" {
   metadata_options {
     http_tokens = "required"
   }
+}
+
+output "instance_id" {
+  description = "The instance ID of the instance created"
+  value       = aws_instance.bastion.id
 }
