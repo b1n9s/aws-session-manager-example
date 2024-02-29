@@ -146,9 +146,8 @@ resource "aws_iam_role_policy_attachment" "ec2_ssm" {
   role       = aws_iam_role.ec2.name
 }
 
-resource "aws_iam_instance_profile" "ec2_instance_profile" {
+resource "aws_iam_instance_profile" "ssm" {
   name = "SSM"
-
   role = aws_iam_role.ec2.name
 }
 
@@ -173,7 +172,7 @@ resource "aws_instance" "bastion" {
   vpc_security_group_ids = [
     aws_security_group.instance.id,
   ]
-  iam_instance_profile = aws_iam_instance_profile.ec2_instance_profile.name
+  iam_instance_profile = aws_iam_instance_profile.ssm.name
 
   metadata_options {
     http_tokens = "required"
