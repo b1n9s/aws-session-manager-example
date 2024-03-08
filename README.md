@@ -1,5 +1,7 @@
 # AWS Session Manager Example
 
+A minimal viable Terraform script showcasing deployment of an EC2 instance in a private AWS subnet without internet access, accessible via Session Manager.
+
 Key points are:
 
 - Enable VPC's DNS support
